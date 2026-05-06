@@ -1,3 +1,9 @@
+databases:
+  - name: resume-db
+    databaseName: resume_analyzer
+    user: resume_user
+    plan: free
+
 services:
   - type: web
     name: resume-analyzer
@@ -7,7 +13,9 @@ services:
     startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --workers 2 --timeout 120
     envVars:
       - key: DATABASE_URL
-        sync: false          # Set this in Render dashboard (Your Supabase URL)
+        fromDatabase:
+          name: resume-db
+          property: connectionString
       - key: PYTHON_VERSION
         value: 3.11.9
       - key: SECRET_KEY

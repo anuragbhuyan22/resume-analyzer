@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: resume-analyzer
+    env: python
+    buildCommand: pip install -r requirements.txt && python -m spacy download en_core_web_sm
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --workers 2 --timeout 120
+    envVars:
+      - key: DATABASE_URL
+        sync: false          # Set this in Render dashboard (Your Supabase URL)
+      - key: SECRET_KEY
+        generateValue: true
+      - key: FLASK_ENV
+        value: production
+      - key: GEMINI_API_KEY
+        sync: false          # Set this in Render dashboard

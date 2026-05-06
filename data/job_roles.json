@@ -1,0 +1,152 @@
+[
+  {
+    "title": "Software Engineer",
+    "category": "Engineering",
+    "description": "Design, develop, test and maintain software applications. Write clean, scalable code and collaborate with cross-functional teams.",
+    "required_skills": ["Python", "Java", "JavaScript", "Git", "SQL", "REST", "Docker", "Agile", "OOP", "CI/CD"]
+  },
+  {
+    "title": "Frontend Developer",
+    "category": "Engineering",
+    "description": "Build responsive and interactive user interfaces using modern web technologies. Ensure great user experience.",
+    "required_skills": ["HTML", "CSS", "JavaScript", "React", "TypeScript", "Git", "Figma", "Redux", "Webpack", "REST"]
+  },
+  {
+    "title": "Backend Developer",
+    "category": "Engineering",
+    "description": "Develop server-side logic, APIs, and databases. Build robust and scalable backend systems.",
+    "required_skills": ["Python", "Node.js", "SQL", "PostgreSQL", "MongoDB", "REST", "Docker", "Git", "Redis", "AWS"]
+  },
+  {
+    "title": "Full Stack Developer",
+    "category": "Engineering",
+    "description": "Work across the entire web stack from database to user interface. Build complete web applications end to end.",
+    "required_skills": ["JavaScript", "React", "Node.js", "SQL", "MongoDB", "HTML", "CSS", "Git", "Docker", "REST"]
+  },
+  {
+    "title": "Data Scientist",
+    "category": "Data & AI",
+    "description": "Extract insights from complex datasets using statistical analysis and machine learning. Communicate findings to stakeholders.",
+    "required_skills": ["Python", "Machine Learning", "Pandas", "NumPy", "scikit-learn", "SQL", "Matplotlib", "Statistical Analysis", "Jupyter", "TensorFlow"]
+  },
+  {
+    "title": "Machine Learning Engineer",
+    "category": "Data & AI",
+    "description": "Design and deploy ML models at scale. Build data pipelines and MLOps infrastructure for production systems.",
+    "required_skills": ["Python", "TensorFlow", "PyTorch", "MLOps", "Docker", "Kubernetes", "SQL", "Feature Engineering", "AWS", "scikit-learn"]
+  },
+  {
+    "title": "Data Analyst",
+    "category": "Data & AI",
+    "description": "Analyze business data to drive decisions. Create dashboards, reports and visualizations for stakeholders.",
+    "required_skills": ["SQL", "Excel", "Python", "Tableau", "Power BI", "Statistical Analysis", "Pandas", "Data Analysis", "A/B Testing", "Looker"]
+  },
+  {
+    "title": "Data Engineer",
+    "category": "Data & AI",
+    "description": "Build and maintain data pipelines, warehouses and infrastructure. Ensure reliable data delivery at scale.",
+    "required_skills": ["Python", "SQL", "Spark", "Kafka", "AWS", "Airflow", "ETL", "Snowflake", "BigQuery", "Docker"]
+  },
+  {
+    "title": "AI Research Engineer",
+    "category": "Data & AI",
+    "description": "Research and develop novel AI algorithms and architectures. Publish findings and translate research to products.",
+    "required_skills": ["Python", "PyTorch", "Deep Learning", "NLP", "Computer Vision", "Transformers", "BERT", "Research", "Mathematics", "GPU Computing"]
+  },
+  {
+    "title": "DevOps Engineer",
+    "category": "Infrastructure",
+    "description": "Automate infrastructure, manage CI/CD pipelines, and ensure system reliability and scalability.",
+    "required_skills": ["Docker", "Kubernetes", "AWS", "Terraform", "CI/CD", "Linux", "Python", "Ansible", "Prometheus", "GitHub Actions"]
+  },
+  {
+    "title": "Cloud Architect",
+    "category": "Infrastructure",
+    "description": "Design and oversee cloud infrastructure strategies. Ensure security, scalability and cost efficiency.",
+    "required_skills": ["AWS", "Azure", "GCP", "Terraform", "Kubernetes", "Security", "Networking", "Docker", "Serverless", "CloudFormation"]
+  },
+  {
+    "title": "Site Reliability Engineer",
+    "category": "Infrastructure",
+    "description": "Ensure production systems are reliable, scalable and fast. Bridge the gap between development and operations.",
+    "required_skills": ["Linux", "Python", "Kubernetes", "Prometheus", "Grafana", "AWS", "CI/CD", "Incident Response", "Docker", "Bash"]
+  },
+  {
+    "title": "Android Developer",
+    "category": "Mobile",
+    "description": "Build and maintain native Android applications with high performance and great UX.",
+    "required_skills": ["Kotlin", "Java", "Android", "Jetpack Compose", "Firebase", "REST", "Git", "SQL", "MVVM", "Play Store"]
+  },
+  {
+    "title": "iOS Developer",
+    "category": "Mobile",
+    "description": "Build and maintain native iOS applications for iPhone and iPad.",
+    "required_skills": ["Swift", "SwiftUI", "iOS", "Xcode", "Firebase", "REST", "Git", "CoreData", "App Store", "Objective-C"]
+  },
+  {
+    "title": "React Native Developer",
+    "category": "Mobile",
+    "description": "Build cross-platform mobile apps using React Native that work on both iOS and Android.",
+    "required_skills": ["React Native", "JavaScript", "TypeScript", "Redux", "REST", "Firebase", "Expo", "Git", "iOS", "Android"]
+  },
+  {
+    "title": "Cybersecurity Analyst",
+    "category": "Security",
+    "description": "Monitor, detect and respond to security threats. Conduct vulnerability assessments and penetration tests.",
+    "required_skills": ["Penetration Testing", "SIEM", "Wireshark", "Nmap", "OWASP", "Python", "Linux", "Incident Response", "Cryptography", "Firewalls"]
+  },
+  {
+    "title": "Product Manager",
+    "category": "Product",
+    "description": "Define product vision and roadmap. Work with engineering, design and marketing to deliver user value.",
+    "required_skills": ["Agile", "Scrum", "Jira", "Roadmapping", "Stakeholder Management", "Data Analysis", "SQL", "Communication", "A/B Testing", "Figma"]
+  },
+  {
+    "title": "UX/UI Designer",
+    "category": "Design",
+    "description": "Design intuitive and beautiful user interfaces. Conduct user research and create wireframes, prototypes, and design systems.",
+    "required_skills": ["Figma", "Adobe XD", "Sketch", "Prototyping", "User Research", "Wireframing", "HTML", "CSS", "Design Systems", "Usability Testing"]
+  },
+  {
+    "title": "Business Analyst",
+    "category": "Business",
+    "description": "Bridge business and technology by gathering requirements, analysing processes and recommending solutions.",
+    "required_skills": ["SQL", "Excel", "Power BI", "Tableau", "Requirements Gathering", "Agile", "Jira", "Communication", "Data Analysis", "Stakeholder Management"]
+  },
+  {
+    "title": "Financial Analyst",
+    "category": "Finance",
+    "description": "Analyse financial data, build models and provide investment or business recommendations.",
+    "required_skills": ["Excel", "Financial Analysis", "SQL", "Python", "Bloomberg", "Forecasting", "Valuation", "Budgeting", "Risk Management", "PowerPoint"]
+  },
+  {
+    "title": "Blockchain Developer",
+    "category": "Engineering",
+    "description": "Design and implement blockchain-based solutions including smart contracts and decentralised applications.",
+    "required_skills": ["Solidity", "Ethereum", "Web3.js", "JavaScript", "Python", "Smart Contracts", "DeFi", "Cryptography", "Git", "Hardhat"]
+  },
+  {
+    "title": "Game Developer",
+    "category": "Engineering",
+    "description": "Design and build video games or game engines. Implement gameplay mechanics, physics and graphics systems.",
+    "required_skills": ["C++", "Unity", "Unreal Engine", "C#", "Python", "OpenGL", "Git", "Mathematics", "Physics", "Multiplayer Networking"]
+  },
+  {
+    "title": "Embedded Systems Engineer",
+    "category": "Engineering",
+    "description": "Develop software for embedded hardware systems such as microcontrollers, IoT devices and real-time systems.",
+    "required_skills": ["C", "C++", "RTOS", "Embedded Systems", "Python", "Linux", "Git", "Hardware", "IoT", "Assembly"]
+  },
+  {
+    "title": "QA Engineer",
+    "category": "Engineering",
+    "description": "Ensure software quality through manual and automated testing. Identify bugs and improve testing processes.",
+    "required_skills": ["Selenium", "Python", "Jest", "Cypress", "Postman", "SQL", "Agile", "JIRA", "CI/CD", "Test Automation"]
+  },
+  {
+    "title": "Technical Writer",
+    "category": "Other",
+    "description": "Create clear and concise documentation for software products, APIs and developer tools.",
+    "required_skills": ["Technical Writing", "Markdown", "Git", "REST", "Documentation", "API", "Communication", "HTML", "Confluence", "Jira"]
+  }
+]

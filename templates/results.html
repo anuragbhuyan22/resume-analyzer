@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ResumeIQ — Analysis Intelligence</title>
+  <link rel="stylesheet" href="/static/style.css"/>
+</head>
+<body class="results-page-body">
+
+  <div class="bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+  </div>
+
+  <nav class="nav">
+    <div class="nav-logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+        <polyline points="14 2 14 8 20 8"/>
+      </svg>
+      Resume<span>IQ</span>
+    </div>
+    <a href="/" class="btn btn-outline" style="padding:8px 20px; font-size:0.85rem;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      New Analysis
+    </a>
+  </nav>
+
+  <!-- SVG Gradient for Gauge -->
+  <svg width="0" height="0" style="position:absolute">
+    <defs>
+      <linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#6366f1"/>
+        <stop offset="100%" stop-color="#a855f7"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <div class="results-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="section-title">Resume Info</div>
+      <div class="panel" style="padding:20px; margin-bottom:24px;">
+        <div style="font-size:0.9rem; font-weight:700; color:var(--text-1); margin-bottom:4px; word-break:break-all;" id="fileNameDisplay">---</div>
+        <div style="font-size:0.8rem; color:var(--text-3);" id="wordCountDisplay">0 words detected</div>
+      </div>
+
+      <div class="section-title">Key Metrics</div>
+      <div id="statCardsSidebar">
+        <!-- Stats will be injected here -->
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      
+      <div class="score-hero">
+        <div class="score-gauge">
+          <svg class="gauge-svg" viewBox="0 0 180 180">
+            <circle class="gauge-bg" cx="90" cy="90" r="80"/>
+            <circle class="gauge-fill" id="scoreGaugeFill" cx="90" cy="90" r="80" style="stroke-dashoffset: 502;"/>
+          </svg>
+          <div class="score-val">
+            <span class="score-num grad-text" id="scoreNum">0</span>
+            <span class="score-label">Rating</span>
+          </div>
+        </div>
+
+        <div>
+          <h1 style="font-size:2.5rem; font-weight:900; margin-bottom:8px; letter-spacing:-1px;">
+            Analysis <span class="grad-text">Complete</span>
+          </h1>
+          <p style="color:var(--text-2); font-size:1.1rem; max-width:500px;">
+            We've successfully audited your profile. Below is your detailed performance report and optimization roadmap.
+          </p>
+          <div id="scoreBadgeContainer" style="margin-top:20px;"></div>
+        </div>
+      </div>
+
+      <div class="section-title">Score Breakdown</div>
+      <div class="panel">
+        <div class="grid-2" id="breakdownGrid" style="gap:32px 60px;">
+          <!-- Breakdown bars injected here -->
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div>
+          <div class="section-title">🛠️ Expert Skills</div>
+          <div class="panel" id="skillsPanel">
+            <div class="skills-container" id="skillsCloud">
+              <!-- Skills injected here -->
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="section-title">🎯 Job Match Index</div>
+          <div class="panel" id="matchPanel">
+            <!-- Job matches injected here -->
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
+        <div class="section-title" style="margin-bottom:0;">💡 Optimization Roadmap</div>
+        <div style="display:flex; gap:12px;">
+          <button class="btn btn-outline" id="saveSuggestionsBtn" style="padding:10px 24px; display:none; border-color:var(--accent-1); color:var(--accent-1);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+            Save Edits
+          </button>
+          <button class="btn btn-primary" id="downloadAiBtn" style="padding:10px 24px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Improved PDF
+          </button>
+        </div>
+      </div>
+
+      <div class="suggestions-list" id="suggestionsList">
+        <!-- Suggestions injected here -->
+      </div>
+
+    </main>
+  </div>
+
+  <script>
+    // ── Utility ─────────────────────────────────────────────────────────────────
+    function animateNum(el, target, suffix = '', duration = 1500) {
+      let start = null;
+      const step = ts => {
+        if (!start) start = ts;
+        const p = Math.min((ts - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - p, 3); // easeOutCubic
+        el.textContent = Math.round(ease * target) + suffix;
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }
+
+    function getRating(s) {
+      if (s >= 80) return { label: 'Elite', cls: 'priority-low', icon: '🏆' };
+      if (s >= 65) return { label: 'Strong', cls: 'priority-medium', icon: '🔥' };
+      if (s >= 45) return { label: 'Average', cls: 'priority-medium', icon: '📈' };
+      return { label: 'Critical', cls: 'priority-high', icon: '⚠️' };
+    }
+
+    // ── Rendering ───────────────────────────────────────────────────────────────
+    async function loadResults() {
+      const id = '{{ analysis_id }}';
+      let data;
+      try {
+        const res = await fetch(`/api/results/${id}`);
+        if (!res.ok) throw new Error('Not found');
+        data = await res.json();
+      } catch {
+        alert('Could not load analysis results.');
+        return;
+      }
+
+      // Sidebar Info
+      document.getElementById('fileNameDisplay').textContent = data.filename;
+      document.getElementById('wordCountDisplay').textContent = `${data.word_count} words analyzed`;
+
+      // Stat Cards
+      const stats = [
+        { label: 'Skills Found', val: Object.values(data.skills || {}).flat().length },
+        { label: 'Action Verbs', val: data.action_verb_count || 0 },
+        { label: 'Metrics Found', val: data.quantified_achievements || 0 }
+      ];
+      document.getElementById('statCardsSidebar').innerHTML = stats.map(s => `
+        <div class="stat-card" style="margin-bottom:16px;">
+          <div class="label">${s.label}</div>
+          <div class="value">${s.val}</div>
+        </div>
+      `).join('');
+
+      // Score Gauge
+      const rating = getRating(data.score);
+      const gauge = document.getElementById('scoreGaugeFill');
+      const circumference = 2 * Math.PI * 80; // 502.65
+      const offset = circumference - (data.score / 100) * circumference;
+      
+      setTimeout(() => {
+        gauge.style.strokeDashoffset = offset;
+        animateNum(document.getElementById('scoreNum'), data.score);
+        document.getElementById('scoreBadgeContainer').innerHTML = `
+          <span class="priority-tag ${rating.cls}" style="font-size:0.9rem; padding:6px 20px; border-radius:50px;">
+            ${rating.icon} ${rating.label} Profile
+          </span>
+        `;
+      }, 300);
+
+      // Breakdown
+      const breakdownEl = document.getElementById('breakdownGrid');
+      const breakdownMap = {
+        contact_info: 'Contact Data',
+        skills: 'Skill Density',
+        experience: 'Experience Depth',
+        education: 'Academic Background',
+        action_verbs: 'Dynamic Verbs',
+        achievements: 'Quantified Metrics'
+      };
+      breakdownEl.innerHTML = Object.entries(data.score_breakdown || {}).map(([key, val]) => `
+        <div class="breakdown-item">
+          <div class="breakdown-label" style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:0.85rem; font-weight:600;">
+            <span style="color:var(--text-2);">${breakdownMap[key] || key}</span>
+            <span style="color:var(--text-1);">${val}</span>
+          </div>
+          <div class="bar-track" style="height:6px; background:rgba(255,255,255,0.05); border-radius:10px; overflow:hidden;">
+            <div class="bar-fill" style="width:0; height:100%; background:var(--grad); transition:width 1.5s cubic-bezier(0.19, 1, 0.22, 1);" data-w="${(val/(key === 'skills' ? 25 : (key === 'achievements' ? 15 : 20)))*100}%"></div>
+          </div>
+        </div>
+      `).join('');
+      setTimeout(() => {
+        document.querySelectorAll('.bar-fill').forEach(b => b.style.width = b.dataset.w);
+      }, 500);
+
+      // Skills
+      const skillsList = Object.values(data.skills || {}).flat();
+      document.getElementById('skillsCloud').innerHTML = skillsList.map(s => `
+        <span class="skill-tag">${s}</span>
+      `).join('');
+
+      // Job Matches
+      document.getElementById('matchPanel').innerHTML = (data.job_matches || []).slice(0, 5).map((m, i) => `
+        <div class="match-item" style="margin-bottom:24px; last-child:margin-bottom:0;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <div style="font-weight:700; font-size:0.95rem;">${m.title}</div>
+            <div style="font-size:0.85rem; font-weight:800; color:var(--accent-2);">${m.match_percent}%</div>
+          </div>
+          <div class="bar-track" style="height:4px; background:rgba(255,255,255,0.05); border-radius:10px;">
+            <div style="width:0; height:100%; background:var(--accent-2); border-radius:10px; transition:width 1.5s ease ${i*0.1}s;" data-w="${m.match_percent}%" class="match-fill"></div>
+          </div>
+        </div>
+      `).join('');
+      setTimeout(() => {
+        document.querySelectorAll('.match-fill').forEach(b => b.style.width = b.dataset.w);
+      }, 600);
+
+      // Suggestions
+      window.currentSuggestions = data.suggestions || [];
+      const suggestionsContainer = document.getElementById('suggestionsList');
+      suggestionsContainer.innerHTML = window.currentSuggestions.map((s, i) => `
+        <div class="suggestion-item">
+          <div class="suggestion-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="suggestion-content" style="flex:1;">
+            <h4 contenteditable="true" class="editable" data-idx="${i}" data-key="title">${s.title}</h4>
+            <p contenteditable="true" class="editable" data-idx="${i}" data-key="description">${s.description}</p>
+            <span class="priority-tag priority-${s.priority.toLowerCase()}">${s.priority} Priority</span>
+          </div>
+        </div>
+      `).join('');
+
+      // Editable logic
+      document.querySelectorAll('.editable').forEach(el => {
+        el.addEventListener('input', (e) => {
+          const { idx, key } = e.target.dataset;
+          window.currentSuggestions[idx][key] = e.target.innerText;
+          document.getElementById('saveSuggestionsBtn').style.display = 'inline-flex';
+        });
+      });
+    }
+
+    // Buttons
+    document.getElementById('saveSuggestionsBtn').addEventListener('click', async () => {
+      const btn = document.getElementById('saveSuggestionsBtn');
+      btn.innerHTML = '<svg class="spinner-small" width="16" height="16" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" fill="none" stroke-width="4"></circle></svg> Saving...';
+      try {
+        const id = '{{ analysis_id }}';
+        const res = await fetch(`/api/results/${id}/suggestions`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ suggestions: window.currentSuggestions })
+        });
+        if (res.ok) {
+          btn.innerHTML = '✅ Saved';
+          setTimeout(() => btn.style.display = 'none', 2000);
+        }
+      } catch (err) { btn.innerText = 'Error'; }
+    });
+
+    document.getElementById('downloadAiBtn').addEventListener('click', () => {
+      const id = '{{ analysis_id }}';
+      window.location.href = `/api/results/${id}/download_improved`;
+    });
+
+    loadResults();
+  </script>
+</body>
+</html>

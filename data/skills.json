@@ -1,0 +1,71 @@
+{
+  "Programming Languages": [
+    "Python", "Java", "JavaScript", "TypeScript", "C", "C++", "C#", "Go",
+    "Rust", "Ruby", "PHP", "Swift", "Kotlin", "R", "MATLAB", "Scala",
+    "Perl", "Haskell", "Dart", "Lua", "Elixir", "Clojure", "F#", "Julia",
+    "Groovy", "Bash", "PowerShell", "Assembly", "COBOL", "Fortran"
+  ],
+  "Web Development": [
+    "HTML", "CSS", "React", "Angular", "Vue.js", "Next.js", "Nuxt.js",
+    "Svelte", "jQuery", "Bootstrap", "Tailwind CSS", "Node.js", "Express.js",
+    "Django", "Flask", "FastAPI", "Spring Boot", "Laravel", "Rails",
+    "ASP.NET", "GraphQL", "REST", "WebSockets", "Redux", "MobX",
+    "Webpack", "Vite", "Gatsby", "Remix", "Astro", "Three.js", "D3.js"
+  ],
+  "Data Science & ML": [
+    "Machine Learning", "Deep Learning", "Natural Language Processing",
+    "Computer Vision", "TensorFlow", "PyTorch", "Keras", "scikit-learn",
+    "XGBoost", "LightGBM", "Pandas", "NumPy", "Matplotlib", "Seaborn",
+    "Plotly", "Jupyter", "Data Analysis", "Statistical Analysis",
+    "Feature Engineering", "Model Deployment", "MLOps", "Hugging Face",
+    "Transformers", "BERT", "GPT", "LangChain", "OpenCV", "NLTK", "spaCy",
+    "A/B Testing", "Hypothesis Testing", "Regression", "Classification",
+    "Clustering", "Reinforcement Learning", "Time Series"
+  ],
+  "Databases": [
+    "MySQL", "PostgreSQL", "MongoDB", "Redis", "SQLite", "Oracle",
+    "SQL Server", "Cassandra", "DynamoDB", "Elasticsearch", "Firebase",
+    "Neo4j", "InfluxDB", "CockroachDB", "Supabase", "PlanetScale",
+    "MariaDB", "Couchbase", "HBase", "Snowflake", "BigQuery", "Redshift",
+    "SQL", "NoSQL", "ORM", "Prisma", "Sequelize", "SQLAlchemy"
+  ],
+  "Cloud & DevOps": [
+    "AWS", "Google Cloud", "GCP", "Azure", "Docker", "Kubernetes",
+    "Terraform", "Ansible", "Jenkins", "GitHub Actions", "CircleCI",
+    "GitLab CI", "Nginx", "Apache", "Linux", "Unix", "CI/CD",
+    "Helm", "ArgoCD", "Prometheus", "Grafana", "Datadog", "Splunk",
+    "CloudFormation", "Pulumi", "Serverless", "Lambda", "Cloud Run",
+    "Vercel", "Netlify", "Heroku", "DigitalOcean", "Cloudflare"
+  ],
+  "Mobile Development": [
+    "Android", "iOS", "React Native", "Flutter", "SwiftUI", "Jetpack Compose",
+    "Ionic", "Xamarin", "Cordova", "Expo", "Firebase", "Push Notifications",
+    "Mobile UI", "App Store", "Play Store"
+  ],
+  "Tools & Platforms": [
+    "Git", "GitHub", "GitLab", "Bitbucket", "Jira", "Confluence",
+    "Slack", "VS Code", "IntelliJ", "Eclipse", "Postman", "Insomnia",
+    "Figma", "Adobe XD", "Sketch", "Notion", "Trello", "Asana",
+    "Jupyter Notebook", "Google Colab", "Tableau", "Power BI",
+    "Looker", "Metabase", "MATLAB", "RStudio"
+  ],
+  "Cybersecurity": [
+    "Penetration Testing", "Ethical Hacking", "OWASP", "Burp Suite",
+    "Metasploit", "Wireshark", "Nmap", "Vulnerability Assessment",
+    "SIEM", "SOC", "Incident Response", "Cryptography", "SSL/TLS",
+    "Firewall", "IDS/IPS", "Zero Trust", "IAM", "OAuth", "JWT"
+  ],
+  "Soft Skills": [
+    "Leadership", "Communication", "Problem Solving", "Teamwork",
+    "Agile", "Scrum", "Kanban", "Project Management", "Critical Thinking",
+    "Time Management", "Mentoring", "Collaboration", "Adaptability",
+    "Creativity", "Analytical Thinking", "Presentation", "Negotiation",
+    "Conflict Resolution", "Decision Making", "Stakeholder Management"
+  ],
+  "Finance & Business": [
+    "Financial Analysis", "Excel", "VBA", "Bloomberg", "QuickBooks",
+    "SAP", "ERP", "CRM", "Salesforce", "HubSpot", "Business Intelligence",
+    "Data Warehousing", "ETL", "Risk Management", "Compliance",
+    "Accounting", "Budgeting", "Forecasting", "Valuation", "Due Diligence"
+  ]
+}

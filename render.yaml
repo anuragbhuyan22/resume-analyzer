@@ -8,6 +8,8 @@ services:
     envVars:
       - key: DATABASE_URL
         sync: false          # Set this in Render dashboard (Your Supabase URL)
+      - key: PYTHON_VERSION
+        value: 3.11.9
       - key: SECRET_KEY
         generateValue: true
       - key: FLASK_ENV

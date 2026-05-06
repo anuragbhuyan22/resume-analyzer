@@ -8,11 +8,13 @@ from pathlib import Path
 
 try:
     import spacy
+    # Load a lightweight version of the model (disable heavy features)
     try:
-        nlp = spacy.load("en_core_web_sm")
+        nlp = spacy.load("en_core_web_sm", disable=["ner", "parser", "attribute_ruler", "tok2vec"])
     except OSError:
-        subprocess.run(["python", "-m", "spacy", "download", "en_core_web_sm"], check=True)
-        nlp = spacy.load("en_core_web_sm")
+        # If model is missing, we rely on the build step. 
+        # Do NOT download here as it blocks the request and causes timeouts.
+        nlp = None
 except Exception:
     nlp = None  # graceful fallback — no spaCy tokenisation
 

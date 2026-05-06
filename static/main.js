@@ -59,6 +59,8 @@ function handleFile(file) {
 }
 
 // ── Upload ─────────────────────────────────────────────────────────────────
+let retryCount = 0;
+
 async function uploadFile(file) {
   showOverlay();
 
@@ -78,17 +80,19 @@ async function uploadFile(file) {
   formData.append('resume', file);
 
   try {
-    const res  = await fetch('/upload', { method: 'POST', body: formData });
+    const res = await fetch('/upload', { method: 'POST', body: formData });
     const data = await res.json();
 
     clearInterval(stepTimer);
 
     if (!res.ok) {
       hideOverlay();
-      const errorData = await res.json().catch(() => ({}));
-      showToast(errorData.error || `Server error (${res.status}). Please try again.`);
+      showToast(data.error || `Server error (${res.status}). Please try again.`);
+      retryCount = 0;
       return;
     }
+
+    retryCount = 0;
 
     // Smooth redirect
     setTimeout(() => {
@@ -97,10 +101,21 @@ async function uploadFile(file) {
 
   } catch (err) {
     clearInterval(stepTimer);
+
+    // Auto-retry once on network failure (handles cold starts & hiccups)
+    if (retryCount < 1) {
+      retryCount++;
+      stepEl.textContent = 'Reconnecting to server…';
+      setTimeout(() => uploadFile(file), 2000);
+      return;
+    }
+
+    retryCount = 0;
     hideOverlay();
-    showToast('Connection unstable. Please check your internet or try again.');
+    showToast('Server is waking up. Please wait 30 seconds and try again.');
   }
 }
+
 
 // ── Overlay helpers ────────────────────────────────────────────────────────
 function showOverlay() {

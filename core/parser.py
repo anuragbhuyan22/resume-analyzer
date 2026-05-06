@@ -15,29 +15,35 @@ def extract_text(filepath: str, ext: str) -> str:
     return ""
 
 
-def _extract_pdf(filepath: str) -> str:
-    """Extract text from all pages of a PDF using pdfplumber."""
     pages = []
     with pdfplumber.open(filepath) as pdf:
-        for page in pdf.pages:
+        # Limit to first 5 pages for speed and security
+        for page in pdf.pages[:5]:
             page_text = page.extract_text()
             if page_text:
                 pages.append(page_text)
     raw = "\n".join(pages)
-    return _clean(raw)
+    return _clean(raw[:10000]) # Cap at 10k characters
 
 
 def _extract_docx(filepath: str) -> str:
     """Extract paragraph text from a DOCX file."""
     doc = Document(filepath)
-    lines = [para.text for para in doc.paragraphs if para.text.strip()]
-    # Also grab text from tables
-    for table in doc.tables:
-        for row in table.rows:
+    lines = []
+    for para in doc.paragraphs:
+        if para.text.strip():
+            lines.append(para.text.strip())
+            if len(lines) > 500: break # Safety break
+            
+    # Also grab text from tables (limited)
+    for table in doc.tables[:3]:
+        for row in table.rows[:10]:
             for cell in row.cells:
                 if cell.text.strip():
                     lines.append(cell.text.strip())
-    return _clean("\n".join(lines))
+    
+    raw = "\n".join(lines)
+    return _clean(raw[:10000]) # Cap at 10k characters
 
 
 def _clean(text: str) -> str:

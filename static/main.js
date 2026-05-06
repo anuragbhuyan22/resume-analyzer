@@ -83,9 +83,10 @@ async function uploadFile(file) {
 
     clearInterval(stepTimer);
 
-    if (!res.ok || data.error) {
+    if (!res.ok) {
       hideOverlay();
-      showToast(data.error || 'Analysis failed. Please try again.');
+      const errorData = await res.json().catch(() => ({}));
+      showToast(errorData.error || `Server error (${res.status}). Please try again.`);
       return;
     }
 
@@ -97,7 +98,7 @@ async function uploadFile(file) {
   } catch (err) {
     clearInterval(stepTimer);
     hideOverlay();
-    showToast('Network error. Please check your connection.');
+    showToast('Connection unstable. Please check your internet or try again.');
   }
 }
 

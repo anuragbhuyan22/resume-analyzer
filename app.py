@@ -87,10 +87,15 @@ def upload():
         save_analysis(result)
 
     except Exception as e:
-        return jsonify({"error": f"Analysis failed: {str(e)}"}), 500
+        print(f"ERROR during analysis: {str(e)}")
+        return jsonify({"error": "The server is currently busy. Please try again in 1 minute."}), 500
     finally:
+        # Clear memory and files
+        import gc
+        gc.collect() 
         try:
-            os.remove(saved_path)
+            if os.path.exists(saved_path):
+                os.remove(saved_path)
         except OSError:
             pass
 

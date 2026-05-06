@@ -23,10 +23,23 @@ def init_db(app):
         
     app.config['SQLALCHEMY_DATABASE_URI'] = db_url
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    
+    # Add connection pooling to prevent "Too many connections" errors
+    app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
+        "pool_size": 5,
+        "max_overflow": 2,
+        "pool_timeout": 30,
+        "pool_recycle": 1800,
+    }
+    
     db.init_app(app)
     
-    with app.app_context():
-        db.create_all()
+    # Only create tables if they don't exist, and catch errors gracefully
+    try:
+        with app.app_context():
+            db.create_all()
+    except Exception as e:
+        print(f"Database initialization warning: {e}")
 
 def save_analysis(result_data: dict):
     analysis = ResumeAnalysis(id=result_data['id'], data=result_data)

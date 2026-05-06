@@ -239,21 +239,28 @@
 
       // Suggestions
       window.currentSuggestions = data.suggestions || [];
+      renderSuggestions();
+
+      // NEW: Fetch AI Suggestions in the background
+      loadAiSuggestions(id);
+    }
+
+    function renderSuggestions() {
       const suggestionsContainer = document.getElementById('suggestionsList');
       suggestionsContainer.innerHTML = window.currentSuggestions.map((s, i) => `
-        <div class="suggestion-item">
+        <div class="suggestion-item ${s.type === 'ai' ? 'ai-glow' : ''}">
           <div class="suggestion-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            ${s.type === 'ai' ? '✨' : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>'}
           </div>
           <div class="suggestion-content" style="flex:1;">
             <h4 contenteditable="true" class="editable" data-idx="${i}" data-key="title">${s.title}</h4>
             <p contenteditable="true" class="editable" data-idx="${i}" data-key="description">${s.description}</p>
-            <span class="priority-tag priority-${s.priority.toLowerCase()}">${s.priority} Priority</span>
+            <span class="priority-tag priority-${s.priority.toLowerCase()}">${s.priority} Priority ${s.type === 'ai' ? '• AI Expert' : ''}</span>
           </div>
         </div>
       `).join('');
 
-      // Editable logic
+      // Re-bind editable logic
       document.querySelectorAll('.editable').forEach(el => {
         el.addEventListener('input', (e) => {
           const { idx, key } = e.target.dataset;
@@ -261,6 +268,25 @@
           document.getElementById('saveSuggestionsBtn').style.display = 'inline-flex';
         });
       });
+    }
+
+    async function loadAiSuggestions(id) {
+      try {
+        const res = await fetch(`/api/results/${id}/ai_suggestions`, { method: 'POST' });
+        if (!res.ok) return;
+        const aiTips = await res.json();
+        if (aiTips && Array.isArray(aiTips)) {
+          // Append and re-sort
+          window.currentSuggestions = [...window.currentSuggestions, ...aiTips];
+          window.currentSuggestions.sort((a, b) => {
+            const priorityMap = { high: 0, medium: 1, low: 2 };
+            return (priorityMap[a.priority.toLowerCase()] || 3) - (priorityMap[b.priority.toLowerCase()] || 3);
+          });
+          renderSuggestions();
+        }
+      } catch (err) {
+        console.error('AI Suggestion background fetch failed:', err);
+      }
     }
 
     // Buttons

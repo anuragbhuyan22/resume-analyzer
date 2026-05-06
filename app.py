@@ -64,8 +64,8 @@ def upload():
         # 3. Job role matching
         matches = match_jobs(text)
 
-        # 4. Improvement suggestions (with optional Gemini hook)
-        suggestions = generate_suggestions(text, analysis, matches)
+        # 4. Improvement suggestions (Rule-based only, no AI yet)
+        suggestions = generate_suggestions(text, analysis, matches, include_ai=False)
 
         # 5. Build full result document
         result = {
@@ -108,6 +108,24 @@ def api_results(analysis_id):
     if not data:
         return jsonify({"error": "Analysis not found"}), 404
     return jsonify(data)
+
+
+@app.route("/api/results/<analysis_id>/ai_suggestions", methods=["POST"])
+def get_ai_tips(analysis_id):
+    data = get_analysis(analysis_id)
+    if not data:
+        return jsonify({"error": "Analysis not found"}), 404
+    
+    from core.improver import _get_gemini_suggestions
+    try:
+        ai_tips = _get_gemini_suggestions(data["raw_text"], data, data["job_matches"])
+        # Update the stored analysis with the new AI tips
+        current_suggestions = list(data.get("suggestions", []))
+        current_suggestions.extend(ai_tips)
+        update_suggestions(analysis_id, current_suggestions)
+        return jsonify(ai_tips)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 
 @app.route("/api/results/<analysis_id>/suggestions", methods=["POST"])
